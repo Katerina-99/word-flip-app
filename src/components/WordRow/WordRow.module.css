@@ -1,0 +1,23 @@
+.tableData {
+  padding: 10px 8px;
+  border: 1px solid #ddd;
+}
+
+.button {
+  margin-right: 6px;
+  padding: 6px 10px;
+  border: 1px solid #999;
+  border-radius: var(--radius);
+  background-color: white;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.button:hover {
+  background-color: #e0e0e0;
+}
+
+.actionButtons {
+  display: flex;
+  justify-content: center;
+}

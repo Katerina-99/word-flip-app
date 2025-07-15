@@ -1,0 +1,14 @@
+:root {
+  --primary-color: rgb(255, 224, 211);
+
+  --font-main: "Arial", sans-serif;
+  --color-bg: #f9f9f9;
+  --color-text: #333;
+  --color-accent: #0077cc;
+  --color-accent-hover: #005fa3;
+  --color-error: #cc0033;
+  --color-border: #ddd;
+  --font-size-base: 16px;
+  --font-size-sm: 14px;
+  --radius: 5px;
+}
