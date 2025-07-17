@@ -4,10 +4,12 @@
   --font-main: "Arial", sans-serif;
   --color-bg: #f9f9f9;
   --color-text: #333;
-  --color-accent: #0077cc;
-  --color-accent-hover: #005fa3;
+  --color-bg-table: #ffffff8a;
+  --color-accent-hover: #fff0eb;
+  --color-accent: #e99685;
   --color-error: #cc0033;
   --color-border: #ddd;
+  --color-newborder: #ccc;
   --font-size-base: 16px;
   --font-size-sm: 14px;
   --radius: 5px;

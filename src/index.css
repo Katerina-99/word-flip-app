@@ -79,7 +79,7 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  /* background-color: var(--primary-color); */
-  background-color: white;
+  background-color: var(--primary-color);
   font-family: var(--font-main);
+  color: var(--color-text);
 }

@@ -1,23 +1,37 @@
 .tableData {
   padding: 10px 8px;
   border: 1px solid #ddd;
+  background-color: #ffffff8a;
 }
 
-.button {
-  margin-right: 6px;
-  padding: 6px 10px;
-  border: 1px solid #999;
+.input {
+  padding: 4px 6px;
+  border: 1px solid #ccc;
   border-radius: var(--radius);
-  background-color: white;
-  cursor: pointer;
-  transition: 0.2s ease;
-}
-
-.button:hover {
-  background-color: #e0e0e0;
+  font-size: var(--font-size-sm);
+  outline-color: var(--color-accent, #0077cc);
 }
 
 .actionButtons {
   display: flex;
   justify-content: center;
+  gap: 6px;
+}
+
+.button {
+  padding: 6px 10px;
+  border: 1px solid #999;
+  border-radius: var(--radius);
+  background-color: var(--color-bg);
+
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.button:hover {
+  background-color: var(--color-accent-hover);
+
+  box-shadow: 6px 5px 14px -7px rgba(0, 0, 0, 0.64);
+  -webkit-box-shadow: 6px 5px 14px -7px rgba(0, 0, 0, 0.64);
+  -moz-box-shadow: 6px 5px 14px -7px rgba(0, 0, 0, 0.64);
 }

@@ -6,22 +6,34 @@ const WordRow = ({ word }) => {
   return (
     <tr>
       <td className={styles.tableData}>
-        {isEditing ? <input defaultValue={word.english} /> : word.english}
-      </td>
-      <td td className={styles.tableData}>
         {isEditing ? (
-          <input defaultValue={word.transcription} />
+          <input className={styles.input} defaultValue={word.english} />
+        ) : (
+          word.english
+        )}
+      </td>
+      <td className={styles.tableData}>
+        {isEditing ? (
+          <input className={styles.input} defaultValue={word.transcription} />
         ) : (
           word.transcription
         )}
       </td>
-      <td td className={styles.tableData}>
-        {isEditing ? <input defaultValue={word.russian} /> : word.russian}
+      <td className={styles.tableData}>
+        {isEditing ? (
+          <input className={styles.input} defaultValue={word.russian} />
+        ) : (
+          word.russian
+        )}
       </td>
-      <td td className={styles.tableData}>
-        {isEditing ? <input defaultValue={word.tags} /> : word.tags}
+      <td className={styles.tableData}>
+        {isEditing ? (
+          <input className={styles.input} defaultValue={word.tags} />
+        ) : (
+          word.tags
+        )}
       </td>
-      <td td className={`${styles.tableData} ${styles.actionButtons}`}>
+      <td className={`${styles.tableData} ${styles.actionButtons}`}>
         {isEditing ? (
           <>
             <button className={styles.button}>Сохранить</button>
