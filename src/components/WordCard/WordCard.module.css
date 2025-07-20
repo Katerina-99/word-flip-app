@@ -5,9 +5,10 @@
   align-items: center;
   gap: 25px;
 
-  max-width: 30%;
+  /* max-width: 30%; */
+  width: 35%;
   min-height: 350px;
-  margin: 25px auto;
+  margin: 20px auto;
   padding: 25px;
 
   border: 1px solid var(--color-newborder);

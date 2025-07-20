@@ -1,8 +1,7 @@
 import WordRow from "../WordRow/WordRow";
 import styles from "./WordTable.module.css";
-import words from "../../words";
 
-const WordTable = () => {
+const WordTable = ({ words }) => {
   return (
     <table className={styles.table}>
       <thead>

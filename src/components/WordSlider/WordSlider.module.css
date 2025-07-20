@@ -1,0 +1,43 @@
+.sliderContainer {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: var(--color-bg-table);
+  max-width: 75%;
+  margin: 10px auto;
+  padding: 30px;
+}
+
+.arrowBtn {
+  border: none;
+  background-color: transparent;
+  border-radius: 50%;
+
+  cursor: pointer;
+}
+
+.arrowImage {
+  width: 55px;
+  height: 55px;
+  transition: transform 0.2s ease;
+}
+
+.arrowBtn:hover .arrowImage {
+  transform: scale(1.05) scaleX(1); /* по умолчанию */
+}
+
+.buttonNext {
+  transform: scaleX(-1);
+}
+
+.pages {
+  flex-basis: 100%;
+  text-align: center;
+}
+
+.emptySlider {
+  padding: 25px;
+  text-align: center;
+  font-size: 18px;
+  color: var(--color-error);
+}
