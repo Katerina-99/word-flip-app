@@ -23,6 +23,30 @@ const words = [
     tags: "",
     tags_json: '[""]',
   },
+  {
+    id: "33529",
+    english: "dog",
+    transcription: "[dɒg]",
+    russian: "собака",
+    tags: "",
+    tags_json: '[""]',
+  },
+  {
+    id: "33529",
+    english: "dog",
+    transcription: "[dɒg]",
+    russian: "собака",
+    tags: "",
+    tags_json: '[""]',
+  },
+  {
+    id: "33529",
+    english: "dog",
+    transcription: "[dɒg]",
+    russian: "собака",
+    tags: "",
+    tags_json: '[""]',
+  },
 ];
 
 export default words;
