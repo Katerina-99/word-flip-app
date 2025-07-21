@@ -33,7 +33,7 @@ const WordSlider = ({ words = [], initialIndex = 0 }) => {
       <button className={styles.arrowBtn} onClick={handlePrev}>
         <img src={arrow} alt="arrowButton" className={styles.arrowImage} />
       </button>
-      <WordCard word={words[currentIndex]} />
+      <WordCard key={words[currentIndex].id} word={words[currentIndex]} />
       <button
         className={`${styles.arrowBtn} ${styles.buttonNext}`}
         onClick={handleNext}
