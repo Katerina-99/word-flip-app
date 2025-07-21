@@ -4,6 +4,7 @@ import WordSlider from "./components/WordSlider/WordSlider";
 import Header from "./components/Header/Header";
 import words from "./words";
 import "./App.css";
+import NotFound from "./components/NotFound/NotFound";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           path="/game"
           element={<WordSlider words={words} initialIndex={1} />}
         />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );
