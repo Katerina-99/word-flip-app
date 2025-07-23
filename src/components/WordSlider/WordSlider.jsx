@@ -5,6 +5,7 @@ import styles from "./WordSlider.module.css";
 
 const WordSlider = ({ words = [], initialIndex = 0 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [studiedCount, setStudiedCount] = useState(0);
 
   useEffect(() => {
     if (initialIndex >= 0 && initialIndex < words.length) {
@@ -28,22 +29,37 @@ const WordSlider = ({ words = [], initialIndex = 0 }) => {
     });
   };
 
+  const handleStudiedCount = () => {
+    if (studiedCount < words.length) {
+      setStudiedCount((prev) => prev + 1);
+    } else {
+      setStudiedCount(studiedCount);
+    }
+  };
+
   return (
-    <div className={styles.sliderContainer}>
-      <button className={styles.arrowBtn} onClick={handlePrev}>
-        <img src={arrow} alt="arrowButton" className={styles.arrowImage} />
-      </button>
-      <WordCard key={words[currentIndex].id} word={words[currentIndex]} />
-      <button
-        className={`${styles.arrowBtn} ${styles.buttonNext}`}
-        onClick={handleNext}
-      >
-        <img src={arrow} alt="arrowButton" className={styles.arrowImage} />
-      </button>
-      <div className={styles.pages}>
-        {currentIndex + 1} / {words.length}
+    <>
+      <div className={styles.sliderContainer}>
+        <button className={styles.arrowBtn} onClick={handlePrev}>
+          <img src={arrow} alt="arrowButton" className={styles.arrowImage} />
+        </button>
+        <WordCard
+          key={words[currentIndex].id}
+          word={words[currentIndex]}
+          onShowTranslation={handleStudiedCount}
+        />
+        <button
+          className={`${styles.arrowBtn} ${styles.buttonNext}`}
+          onClick={handleNext}
+        >
+          <img src={arrow} alt="arrowButton" className={styles.arrowImage} />
+        </button>
+        <div className={styles.pages}>
+          {currentIndex + 1} / {words.length}
+        </div>
       </div>
-    </div>
+      <div className={styles.studiedWords}>Words studied: {studiedCount}</div>
+    </>
   );
 };
 

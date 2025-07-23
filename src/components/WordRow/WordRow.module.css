@@ -1,6 +1,6 @@
 .tableData {
   padding: 10px 8px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--color-border, #ddd);
   background-color: #ffffff8a;
 }
 

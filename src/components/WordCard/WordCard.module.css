@@ -28,3 +28,9 @@
   background-color: var(--color-accent-hover);
   box-shadow: var(--box-shadow);
 }
+
+.button:focus {
+  outline: 2px solid var(--color-border-hover);
+  border: none;
+  /* box-shadow: var(--box-shadow); */
+}
