@@ -2,6 +2,7 @@
   padding: 10px 8px;
   border: 1px solid var(--color-border, #ddd);
   background-color: #ffffff8a;
+  text-align: center;
 }
 
 .input {
@@ -9,13 +10,22 @@
   border: 1px solid #ccc;
   border-radius: var(--radius);
   font-size: var(--font-size-sm);
-  outline-color: var(--color-accent, #0077cc);
+  outline-color: var(--color-accent, #e99685);
 }
 
 .actionButtons {
   display: flex;
   justify-content: center;
   gap: 6px;
+}
+.editingButton {
+  padding: 11px 10px;
+  border: 1px solid #999;
+  border-radius: var(--radius);
+  background-color: var(--color-bg);
+
+  cursor: pointer;
+  transition: 0.2s ease;
 }
 
 .button {
@@ -31,4 +41,15 @@
 .button:hover {
   background-color: var(--color-accent-hover);
   box-shadow: var(--box-shadow);
+}
+
+.invalid {
+  border: 1px solid var(--color-error);
+  outline-color: var(--color-error, #cc0033);
+}
+
+.error {
+  text-align: center;
+  font-size: 12px;
+  color: var(--color-error);
 }

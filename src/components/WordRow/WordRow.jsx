@@ -11,7 +11,6 @@ const WordRow = ({ word }) => {
   });
 
   const handleEnglishChange = (e) => {
-    console.log(e.target.value);
     setEditingWord((prev) => ({ ...prev, english: e.target.value }));
   };
 
@@ -26,6 +25,12 @@ const WordRow = ({ word }) => {
   const handleTagsChange = (e) => {
     setEditingWord((prev) => ({ ...prev, tags: e.target.value }));
   };
+
+  const isEnglishEmpty = editingWord.english.trim() === "";
+  const isTranscriptionEmpty = editingWord.transcription.trim() === "";
+  const isRussianEmpty = editingWord.russian.trim() === "";
+
+  const isInvalid = isEnglishEmpty || isTranscriptionEmpty || isRussianEmpty;
 
   const handleSave = () => {
     setIsEditing(false);
@@ -45,33 +50,50 @@ const WordRow = ({ word }) => {
     <tr>
       <td className={styles.tableData}>
         {isEditing ? (
-          <input
-            className={styles.input}
-            value={editingWord.english}
-            onChange={handleEnglishChange}
-          />
+          <>
+            <input
+              className={`${styles.input} ${
+                isEnglishEmpty ? styles.invalid : ""
+              }`}
+              value={editingWord.english}
+              onChange={handleEnglishChange}
+            />
+            {isEnglishEmpty && <p className={styles.error}>Поле обязательно</p>}
+          </>
         ) : (
           word.english
         )}
       </td>
       <td className={styles.tableData}>
         {isEditing ? (
-          <input
-            className={styles.input}
-            value={editingWord.transcription}
-            onChange={handleTranscriptionChange}
-          />
+          <>
+            <input
+              className={`${styles.input} ${
+                isTranscriptionEmpty ? styles.invalid : ""
+              }`}
+              value={editingWord.transcription}
+              onChange={handleTranscriptionChange}
+            />
+            {isTranscriptionEmpty && (
+              <p className={styles.error}>Поле обязательно</p>
+            )}
+          </>
         ) : (
           word.transcription
         )}
       </td>
       <td className={styles.tableData}>
         {isEditing ? (
-          <input
-            className={styles.input}
-            value={editingWord.russian}
-            onChange={handleRussianChange}
-          />
+          <>
+            <input
+              className={`${styles.input} ${
+                isRussianEmpty ? styles.invalid : ""
+              }`}
+              value={editingWord.russian}
+              onChange={handleRussianChange}
+            />
+            {isRussianEmpty && <p className={styles.error}>Поле обязательно</p>}
+          </>
         ) : (
           word.russian
         )}
@@ -90,10 +112,14 @@ const WordRow = ({ word }) => {
       <td className={`${styles.tableData} ${styles.actionButtons}`}>
         {isEditing ? (
           <>
-            <button className={styles.button} onClick={handleSave}>
+            <button
+              disabled={isInvalid}
+              className={styles.editingButton}
+              onClick={handleSave}
+            >
               Сохранить
             </button>
-            <button className={styles.button} onClick={handleCancel}>
+            <button className={styles.editingButton} onClick={handleCancel}>
               Отмена
             </button>
           </>
