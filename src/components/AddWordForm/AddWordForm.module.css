@@ -1,0 +1,53 @@
+.form {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 25px;
+  padding: 20px 7px;
+  background-color: var(--color-bg-table);
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.input {
+  padding: 4px 6px;
+  border: 1px solid #ccc;
+  border-radius: var(--radius);
+  font-size: var(--font-size-sm);
+  outline-color: var(--color-accent, #e99685);
+}
+
+.addButton {
+  padding: 6px 15px;
+  border: 1px solid #999;
+  border-radius: var(--radius);
+  background-color: var(--color-bg);
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.addButton:hover {
+  background-color: var(--color-accent-hover);
+  box-shadow: var(--box-shadow);
+}
+
+.errorMessage {
+  flex-basis: 100%;
+  color: var(--color-error);
+}
+.error {
+  margin-left: -27px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--color-error);
+}
+
+.invalid {
+  border: 1px solid var(--color-error);
+  outline-color: var(--color-error, #cc0033);
+}

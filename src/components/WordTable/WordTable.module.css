@@ -1,7 +1,11 @@
-.table {
+.contentContainer {
   width: 90%;
   margin: 100px auto;
+}
 
+.table {
+  width: 100%;
+  margin-bottom: 40px;
   border-collapse: collapse;
   font-family: sans-serif;
   font-size: 16px;

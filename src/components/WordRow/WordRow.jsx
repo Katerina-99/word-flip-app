@@ -117,10 +117,10 @@ const WordRow = ({ word }) => {
               className={styles.editingButton}
               onClick={handleSave}
             >
-              Сохранить
+              Save
             </button>
             <button className={styles.editingButton} onClick={handleCancel}>
-              Отмена
+              Cancel
             </button>
           </>
         ) : (
