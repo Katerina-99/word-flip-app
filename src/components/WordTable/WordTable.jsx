@@ -1,8 +1,11 @@
 import WordRow from "../WordRow/WordRow";
 import AddWordForm from "../AddWordForm/AddWordForm";
 import styles from "./WordTable.module.css";
+import { useContext } from "react";
+import { WordsContext } from "../../contexts/WordsContext";
 
-const WordTable = ({ words }) => {
+const WordTable = () => {
+  const { words } = useContext(WordsContext);
   return (
     <div className={styles.contentContainer}>
       <table className={styles.table}>
