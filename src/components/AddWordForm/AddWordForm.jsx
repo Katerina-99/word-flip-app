@@ -29,12 +29,14 @@ const AddWordForm = () => {
       return;
     }
 
-    console.log({
+    const newWord = {
       english: englishValue,
       transcription: transcriptionValue,
       russian: russianValue,
       tags: tagsValue,
-    });
+    };
+
+    console.log(newWord);
     setEnglishValue("");
     setTranscriptionValue("");
     setRussianValue("");
@@ -100,7 +102,6 @@ const AddWordForm = () => {
         />
       </label>
       <button className={styles.addButton}>Add word</button>
-      {/* {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>} */}
     </form>
   );
 };
