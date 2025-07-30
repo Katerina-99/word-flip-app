@@ -7,7 +7,7 @@ import { useContext } from "react";
 import WordsContext from "../../contexts/WordsContext.js";
 
 const WordTable = () => {
-  const { words, loading, error } = useContext(WordsContext);
+  const { words, loading, error, addWord } = useContext(WordsContext);
 
   if (loading) {
     return <WordLoading />;
@@ -33,7 +33,7 @@ const WordTable = () => {
           ))}
         </tbody>
       </table>
-      <AddWordForm />
+      <AddWordForm onAdd={addWord} />
     </div>
   );
 };

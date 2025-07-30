@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./AddWordForm.module.css";
 
-const AddWordForm = () => {
+const AddWordForm = ({ onAdd }) => {
   const [englishValue, setEnglishValue] = useState("");
   const [transcriptionValue, setTranscriptionValue] = useState("");
   const [russianValue, setRussianValue] = useState("");
@@ -34,9 +34,10 @@ const AddWordForm = () => {
       transcription: transcriptionValue,
       russian: russianValue,
       tags: tagsValue,
+      tags_json: "",
     };
 
-    console.log(newWord);
+    onAdd(newWord);
     setEnglishValue("");
     setTranscriptionValue("");
     setRussianValue("");

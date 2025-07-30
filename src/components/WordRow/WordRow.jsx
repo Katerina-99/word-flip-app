@@ -1,13 +1,17 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import WordsContext from "../../contexts/WordsContext.js";
 import styles from "./WordRow.module.css";
 
 const WordRow = ({ word }) => {
+  const { deleteWord, updateWord } = useContext(WordsContext);
+
   const [isEditing, setIsEditing] = useState(false);
   const [editingWord, setEditingWord] = useState({
     english: word.english,
     transcription: word.transcription,
     russian: word.russian,
     tags: word.tags,
+    id: word.id,
   });
 
   const handleEnglishChange = (e) => {
@@ -33,6 +37,7 @@ const WordRow = ({ word }) => {
   const isInvalid = isEnglishEmpty || isTranscriptionEmpty || isRussianEmpty;
 
   const handleSave = () => {
+    updateWord(editingWord);
     setIsEditing(false);
   };
 
@@ -42,8 +47,13 @@ const WordRow = ({ word }) => {
       transcription: word.transcription,
       russian: word.russian,
       tags: word.tags,
+      id: word.id,
     });
     setIsEditing(false);
+  };
+
+  const handleDelete = (id) => {
+    deleteWord(id);
   };
 
   return (
@@ -133,7 +143,12 @@ const WordRow = ({ word }) => {
             >
               ✏️
             </button>
-            <button className={styles.button}>❌</button>
+            <button
+              className={styles.button}
+              onClick={() => handleDelete(word.id)}
+            >
+              ❌
+            </button>
           </>
         )}
       </td>
