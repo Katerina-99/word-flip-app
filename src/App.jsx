@@ -4,7 +4,7 @@ import WordSlider from "./components/WordSlider/WordSlider";
 import Header from "./components/Header/Header";
 import "./App.css";
 import NotFound from "./components/NotFound/NotFound";
-import { WordsProvider } from "./contexts/WordsContext";
+import WordsProvider from "./components/WordsProvider/WordsProvider";
 
 function App() {
   return (

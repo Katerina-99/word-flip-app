@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import WordCard from "../WordCard/WordCard";
 import arrow from "../../assets/images/arrowBtn.svg";
 import styles from "./WordSlider.module.css";
+import WordsContext from "../../contexts/WordsContext";
 
-const WordSlider = ({ words = [], initialIndex = 0 }) => {
+const WordSlider = ({ initialIndex = 0 }) => {
+  const { words } = useContext(WordsContext);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [studiedCount, setStudiedCount] = useState(0);
 
