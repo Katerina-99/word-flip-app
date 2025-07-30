@@ -1,15 +1,19 @@
 import WordRow from "../WordRow/WordRow";
 import AddWordForm from "../AddWordForm/AddWordForm";
 import WordLoading from "../WordLoading/WordLoading";
+import WordError from "../WordError/WordError";
 import styles from "./WordTable.module.css";
 import { useContext } from "react";
 import WordsContext from "../../contexts/WordsContext.js";
 
 const WordTable = () => {
-  const { words, loading } = useContext(WordsContext);
+  const { words, loading, error } = useContext(WordsContext);
 
   if (loading) {
     return <WordLoading />;
+  }
+  if (error) {
+    return <WordError />;
   }
   return (
     <div className={styles.contentContainer}>
