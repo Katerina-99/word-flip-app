@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+// import { observer } from "mobx-react";
 import styles from "./WordCard.module.css";
 
 const WordCard = ({ word, onShowTranslation }) => {

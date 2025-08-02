@@ -1,9 +1,10 @@
-import { useState, useContext } from "react";
-import WordsContext from "../../contexts/WordsContext.js";
+import { useState } from "react";
+import { observer } from "mobx-react";
+import wordsStore from "../../store/WordsStore";
 import styles from "./WordRow.module.css";
 
-const WordRow = ({ word }) => {
-  const { deleteWord, updateWord } = useContext(WordsContext);
+const WordRow = observer(({ word }) => {
+  const { deleteWord, updateWord } = wordsStore;
 
   const [isEditing, setIsEditing] = useState(false);
   const [editingWord, setEditingWord] = useState({
@@ -154,6 +155,6 @@ const WordRow = ({ word }) => {
       </td>
     </tr>
   );
-};
+});
 
 export default WordRow;

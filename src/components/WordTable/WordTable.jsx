@@ -1,13 +1,14 @@
+// import { useEffect } from "react";
+import { observer } from "mobx-react";
+import wordsStore from "../../store/WordsStore";
 import WordRow from "../WordRow/WordRow";
 import AddWordForm from "../AddWordForm/AddWordForm";
 import WordLoading from "../WordLoading/WordLoading";
 import WordError from "../WordError/WordError";
 import styles from "./WordTable.module.css";
-import { useContext } from "react";
-import WordsContext from "../../contexts/WordsContext.js";
 
-const WordTable = () => {
-  const { words, loading, error, addWord } = useContext(WordsContext);
+const WordTable = observer(() => {
+  const { words, loading, error, addWord } = wordsStore;
 
   if (loading) {
     return <WordLoading />;
@@ -36,6 +37,6 @@ const WordTable = () => {
       <AddWordForm onAdd={addWord} />
     </div>
   );
-};
+});
 
 export default WordTable;

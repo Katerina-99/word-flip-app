@@ -1,28 +1,31 @@
-import { useState, useEffect } from "react";
-import WordsContext from "../../contexts/WordsContext.js";
+import { makeAutoObservable } from "mobx";
 
-const WordsProvider = ({ children }) => {
-  const [words, setWords] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+class WordsStore {
+  words = [];
+  loading = false;
+  error = null;
 
-  const fetchWords = async () => {
-    setLoading(true);
+  constructor() {
+    makeAutoObservable(this);
+  }
+
+  fetchWords = async () => {
+    this.loading = true;
     try {
       const response = await fetch("/api/words");
       const data = await response.json();
       if (!response.ok) throw new Error("Ошибка при загрузке слов");
 
-      setWords(data);
+      this.words = data;
     } catch (err) {
-      setError(err.message);
+      this.error = err.message;
     } finally {
-      setLoading(false);
+      this.loading = false;
     }
   };
 
-  const addWord = async (newWord) => {
-    setLoading(true);
+  addWord = async (newWord) => {
+    this.loading = true;
     try {
       const response = await fetch("/api/words/add", {
         method: "POST",
@@ -34,32 +37,32 @@ const WordsProvider = ({ children }) => {
       if (!response.ok) throw new Error("Ошибка при добавлении слова");
 
       const addedWord = await response.json();
-      setWords((words) => [...words, addedWord]);
+      this.words.push(addedWord);
     } catch (err) {
-      setError(err.message);
+      this.error = err.message;
     } finally {
-      setLoading(false);
+      this.loading = false;
     }
   };
 
-  const deleteWord = async (id) => {
-    setLoading(true);
+  deleteWord = async (id) => {
+    this.loading = true;
     try {
       const response = await fetch(`/api/words/${id}/delete`, {
         method: "POST",
       });
       if (!response.ok) throw new Error("Ошибка при удалении слова");
 
-      setWords((words) => words.filter((word) => word.id !== id));
+      this.words = this.words.filter((word) => word.id !== id);
     } catch (err) {
-      setError(err.message);
+      this.error = err.message;
     } finally {
-      setLoading(false);
+      this.loading = false;
     }
   };
 
-  const updateWord = async (updatedWord) => {
-    setLoading(true);
+  updateWord = async (updatedWord) => {
+    this.loading = true;
     try {
       const response = await fetch(`/api/words/${updatedWord.id}/update`, {
         method: "POST",
@@ -71,35 +74,16 @@ const WordsProvider = ({ children }) => {
       if (!response.ok) throw new Error("Ошибка при изменении слова");
 
       const newWord = await response.json();
-      setWords((words) =>
-        words.map((word) => (word.id === newWord.id ? newWord : word))
+      this.words = this.words.map((word) =>
+        word.id === newWord.id ? newWord : word
       );
     } catch (err) {
-      setError(err.message);
+      this.error = err.message;
     } finally {
-      setLoading(false);
+      this.loading = false;
     }
   };
+}
 
-  useEffect(() => {
-    fetchWords();
-  }, []);
-
-  return (
-    <WordsContext.Provider
-      value={{
-        words,
-        fetchWords,
-        loading,
-        error,
-        addWord,
-        deleteWord,
-        updateWord,
-      }}
-    >
-      {children}
-    </WordsContext.Provider>
-  );
-};
-
-export default WordsProvider;
+const wordsStore = new WordsStore();
+export default wordsStore;

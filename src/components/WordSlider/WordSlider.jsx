@@ -1,11 +1,12 @@
-import { useContext, useEffect, useState } from "react";
-import WordsContext from "../../contexts/WordsContext";
+import { useEffect, useState } from "react";
+import { observer } from "mobx-react";
+import wordsStore from "../../store/WordsStore";
 import WordCard from "../WordCard/WordCard";
 import arrow from "../../assets/images/arrowBtn.svg";
 import styles from "./WordSlider.module.css";
 
-const WordSlider = ({ initialIndex = 0 }) => {
-  const { words } = useContext(WordsContext);
+const WordSlider = observer(({ initialIndex = 0 }) => {
+  const { words } = wordsStore;
   const [currentIndex, setCurrentIndex] = useState(0);
   const [studiedCount, setStudiedCount] = useState(0);
 
@@ -63,6 +64,6 @@ const WordSlider = ({ initialIndex = 0 }) => {
       <div className={styles.studiedWords}>Words studied: {studiedCount}</div>
     </>
   );
-};
+});
 
 export default WordSlider;
