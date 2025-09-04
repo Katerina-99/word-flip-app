@@ -1,15 +1,17 @@
 import { useState, useEffect } from "react";
-import WordsContext from "../../contexts/WordsContext.js";
+import WordsContext from "./WordsContext.js";
 
 const WordsProvider = ({ children }) => {
   const [words, setWords] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const API_URL = "https://itgirlschool.justmakeit.ru/api";
+
   const fetchWords = async () => {
     setLoading(true);
     try {
-      const response = await fetch("/api/words");
+      const response = await fetch(`${API_URL}/words`);
       const data = await response.json();
       if (!response.ok) throw new Error("Ошибка при загрузке слов");
 
@@ -24,7 +26,7 @@ const WordsProvider = ({ children }) => {
   const addWord = async (newWord) => {
     setLoading(true);
     try {
-      const response = await fetch("/api/words/add", {
+      const response = await fetch(`${API_URL}/words/add`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -45,7 +47,7 @@ const WordsProvider = ({ children }) => {
   const deleteWord = async (id) => {
     setLoading(true);
     try {
-      const response = await fetch(`/api/words/${id}/delete`, {
+      const response = await fetch(`${API_URL}/words/${id}/delete`, {
         method: "POST",
       });
       if (!response.ok) throw new Error("Ошибка при удалении слова");
@@ -61,13 +63,16 @@ const WordsProvider = ({ children }) => {
   const updateWord = async (updatedWord) => {
     setLoading(true);
     try {
-      const response = await fetch(`/api/words/${updatedWord.id}/update`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(updatedWord),
-      });
+      const response = await fetch(
+        `${API_URL}/words/${updatedWord.id}/update`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(updatedWord),
+        }
+      );
       if (!response.ok) throw new Error("Ошибка при изменении слова");
 
       const newWord = await response.json();
